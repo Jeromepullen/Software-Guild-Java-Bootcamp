@@ -1,0 +1,4 @@
+dao/DaoImplAppointmentTest.class
+dao/DaoImplProfessionalTest.class
+dao/DaoImplCustomerTest.class
+service/ServiceTest.class

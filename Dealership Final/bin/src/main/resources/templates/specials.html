@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+
+<head th:replace="~{shared :: head ('specials')}">
+    <title>Specials</title>
+</head>
+
+<body>
+    <div class="container" th:object="${currentSpecials}">
+        <div th:replace="~{shared :: navbar ('specials')}"></div>
+        <div class="jumbotron col-9 mx-auto">
+            <h1 class="display-4">
+                <em>Specials</em>
+            </h1>
+        </div>
+        <hr id="line">
+        <div class="row">
+            <div class="col-12 mx-auto">
+                <div class="specials-container" th:each="special : ${currentSpecials}">
+                    <h2 class="display-4 specials" th:text="${special.title}">Title</h2>
+                    <p class="specials" th:text=${special.description}>Description</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

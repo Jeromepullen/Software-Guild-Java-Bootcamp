@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="en">
+
+    <head th:replace="~{shared :: head ('home')}">
+        <title>New Inventory</title>
+    </head>
+
+    <body>
+        <div class="container" th:object="${car}">
+            <div th:replace="~{shared :: navbar ('home')}"></div>
+            <div class="jumbotron col-9 mx-auto">
+                <h1 class="display-4">
+                    <em>Detailed Information</em>
+                </h1>
+            </div>
+            <div class="row">
+                <div class="col-4">
+                    <img th:src="*{vehicle.url}" class="featuredCars image-fluid" alt="Pic of Car">
+                </div>
+                <div class="col-4">
+                    <h5 class="display-5" th:text="*{vehicle.year} + ' ' + *{make.name} + ' ' + *{model.name}">
+                        Cars
+                        <br>
+                    </h5>
+                    <h6 th:text="'Mileage: ' + *{vehicle.mileage} + ' miles'">Miles</h6> <br>
+                    <h6 th:text="'Body Style: ' + *{body.name}">Body</h6> <br>
+                    <h6 th:text="'Interior: ' + *{interiorColor.name}">Interior</h6> <br>
+                    <h6 th:text="'Exterior: ' + *{exteriorColor.name}">Exterior</h6> <br>
+                </div>
+                <div class="col-4">
+                    <h5 class="display-5" th:text="'MSRP: $'+ *{vehicle.msrp}">MSRP</h5>
+                    <h5 class="display-5" th:text="'Our Price: $' + *{vehicle.price}">Price</h5>
+                    <hr id="line">
+                    <h6 th:text="'VIN: ' + *{vehicle.vin}"><h6 id="vin1">VIN</h6></h6>
+                    <h6 th:text="'Description: ' + *{vehicle.description}">Description</h6>
+                    <button>Get More Info About This Vehicle</button>
+                    
+                    <br>
+                    <p1></p1> 
+                    <br>
+                    <p2></p2> 
+                    <br>
+                    <p3></p3> 
+                    <br>
+                    <p4></p4> 
+                    <br>
+                    <p5></p5> 
+                    <br>
+                    <p6></p6> 
+                    <br>
+                    <p7></p7> 
+                    <br>
+                    <p8></p8> 
+                    <br>
+                    <p9></p9> 
+                    <br>
+                    <p10></p10> 
+                    <br>
+                    <p11></p11> 
+                    <br>
+                    <p12></p12> 
+                    <br>
+                    <p13></p13> 
+                    <br>
+                    <p14></p14> 
+                    <br>
+                    <p15></p15> 
+                    <br>
+                    <p16></p16>
+                    <br>
+                    <p17></p17>                     
+                    
+                </div>   
+            </div>
+
+
+
+
+
+
+
+
+            <hr id="line">
+            <div class="row" id="newCarContainer">
+            </div>
+        </div>
+
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+                integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+                integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+
+
+        
+        <script>
+            var vin1 = $(this).html();
+            $(this).text(vin1);
+            
+                $(document).ready(function () {
+                $("button").click(function () {
+var settings = {
+	"async": true,
+	"crossDomain": true,
+	"url": "https://vindecoder.p.rapidapi.com/decode_vin?vin=4F2YU09161KM33122",
+	"method": "GET",
+	"headers": {
+		"x-rapidapi-host": "vindecoder.p.rapidapi.com",
+		"x-rapidapi-key": "933f714574msh521332ab22be2b8p11dc61jsnf7a534b22a90"
+	}
+}
+
+
+
+$.ajax(settings).done(function (response) {
+    $("p1").append(response.specification.year)
+    $("p2").append(response.specification.make)
+    $("p3").append(response.specification.model)
+    $("p4").append(response.specification.trim_level)    
+    $("p5").append(response.specification.engine)
+    $("p6").append(response.specification.style)
+    $("p7").append(response.specification.made_in)
+    $("p8").append(response.specification.steering_type)   
+    $("p9").append(response.specification.anti_brake_system)
+    $("p10").append(response.specification.tank_size)
+    $("p11").append(response.specification.overall_height)
+    $("p12").append(response.specification.overall_length)   
+    $("p13").append(response.specification.overall_width)
+    $("p14").append(response.specification.standard_seating)
+    $("p15").append(response.specification.optional_seating)
+    $("p16").append(response.specification.highway_mileage)  
+    $("p17").append(response.specification.city_mileage)     
+});
+});
+});
+</script>
+        
+
+
+<!--        <script>
+            $(document).ready(function () {
+                $("button").click(function () {
+                    let year = $( this ).find( 'div.col-4  h5.' ).text();
+                    let make = $( this ).find( 'div.col-4  span.login' ).text();
+                    let model = $( this ).find( 'div.col-4  span.login' ).text();
+        
+                    $.ajax({
+                        method: "GET",
+                        url: "https://jsonplaceholder.typicode.com/todos/*{vehicle.year}",
+                        dataType: "json",
+                        crossDomain: true,
+                        success: function (result) {
+                            $.each(result, function (i, field) {
+                                $("div").append(field + " ");
+                            });
+                        },
+                        error: function (xhr, status, err) {
+                            console.log(xhr, status, err);
+                        }
+                    });
+                });
+
+            });
+        </script>-->
+
+<!--        <script>
+            $.ajax({
+                url: "https://jsonplaceholder.typicode.com/todos/1",
+                type: "GET",
+                dataType: "json",
+                success: function (result)
+                {
+                    console.log(result);
+                },
+                error: function (xhr, ajaxOptions, thrownError)
+                {
+                    console.log(xhr.status);
+                    console.log(thrownError);
+                }
+            });
+        </script>-->
+
+            <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+            <script>
+            $(document).ready(function(){
+              $("button").click(function(){
+                    $.ajax({
+                    url: "https://one.nhtsa.gov/webapi/api/Recalls/vehicle/modelyear/2000/make/saturn/model/LS?format=json",
+                    type: "GET",
+                    dataType: "json",
+               
+                function(result){
+                  $.each(result, function(i, field){
+                    $("div").append(field + " ");
+                  });
+                }}
+              })
+            })
+            ;
+            </script>
+            
+            <button>222Get JSON data</button>
+            
+            <div></div>-->
+
+    </body>
+
+</html>

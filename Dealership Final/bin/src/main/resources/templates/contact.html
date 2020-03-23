@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+
+<head th:replace="~{shared :: head ('contact')}">
+    <title>Contact</title>
+</head>
+
+<body>
+    <div class="container">
+        <div th:replace="~{shared :: navbar ('contact')}"></div>
+        <div class="jumbotron col-9 mx-auto">
+            <h1 class="display-4">
+                <em>Car Dealership</em>
+            </h1>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                    <form method="POST" th:object="${contact}">
+                        <div class="form-group" th:classappend="${#fields.hasErrors('name')}? 'validation-err'">
+                            <label for="name">Name</label>
+                            <input class="form-control" type="text" th:field="*{name}">
+                            <div class="validation-message" th:if="${#fields.hasErrors('name')}" 
+                                th:each="error : ${#fields.errors('name')}" 
+                                th:text="${error}">
+                                Error Message
+                            </div>
+                        </div>
+                        <div class="form-group" th:classappend="${#fields.hasErrors('email')}? 'validation-err'">
+                            <label for="email">Email</label>
+                            <input class="form-control" type="email" th:field="*{email}">
+                            <div class="validation-message" th:if="${#fields.hasErrors('email')}" 
+                                th:each="error : ${#fields.errors('email')}" 
+                                th:text="${error}">
+                                Error Message
+                            </div>
+                        </div>
+                        <div class="form-group" th:classappend="${#fields.hasErrors('phone')}? 'validation-err'">
+                                <label for="phone">Phone</label>
+                                <input class="form-control" type="tel" th:field="*{phone}">
+                                <div class="validation-message" th:if="${#fields.hasErrors('phone')}" 
+                                    th:each="error : ${#fields.errors('phone')}" 
+                                    th:text="${error}">
+                                    Error Message
+                                </div>
+                        </div>
+                        <div class="form-group" th:classappend="${#fields.hasErrors('message')}? 'validation-err'">
+                                <label for="message">Message</label>
+                                <input class="form-control" type="text" th:field="*{message}">
+                                <div class="validation-message" th:if="${#fields.hasErrors('message')}" 
+                                    th:each="error : ${#fields.errors('message')}" 
+                                    th:text="${error}">
+                                    Error Message
+                                </div>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary">Save</button>
+                            <a href="/home/contact" class="btn btn-default">Cancel</a>
+                        </div>
+                </form>
+                            
+            </div>
+            <div class="col-6">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11284.98758736536!2d-93.31270533022463!3d44.99960790000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x52b333b2b32aaf71%3A0x5f6d4724d27c03e3!2sLong%20Moune%20Auto%20Sales!5e0!3m2!1sen!2sus!4v1580500466395!5m2!1sen!2sus" width="400" height="300" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+                <p>
+                    1821 W Broadway Ave,    
+                    <br>
+                        Minneapolis, MN 55411 <br>
+                        Phone: 555-5555
+                </p>
+            </div>             
+        </div>
+        <div class="row">
+            <hr>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script src="/js/new.js"></script>
+</body>
+
+</html>

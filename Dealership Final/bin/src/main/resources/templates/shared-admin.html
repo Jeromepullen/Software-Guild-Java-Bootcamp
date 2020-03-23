@@ -1,0 +1,45 @@
+<html>
+
+<head th:fragment="head (title)">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title th:text="${title}">Page Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+        integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" href="../static/styles/index.css" th:href="${'/styles/index.css'}">
+</head>
+
+<body>
+    <div class="navbar navbar-expand-sm navbar-light" th:fragment="navbar (active)">
+        <nav class="navbar-brand">
+            <img src="/images/logo.png" alt="Logo">
+        </nav>
+        <ul class="navbar-nav">
+            <li class="nav-item" th:classappend="${active == 'home'}? 'active'">
+                <a class="nav-link" href="/">Home</a>
+            </li>
+            <li class="nav-item" th:classappend="${active == 'inventory-new'}? 'active'">
+                <a class="nav-link" href="/inventory/new">New Inventory</a>
+            </li>
+            <li class="nav-item" th:classappend="${active == 'inventory-used'}? 'active'">
+                <a class="nav-link" href="/inventory/used">Used Inventory</a>
+            </li>
+            <li class="nav-item" th:classappend="${active == 'specials'}? 'active'">
+                <a class="nav-link" href="/home/specials">Specials</a>
+            </li>
+            <li class="nav-item" th:classappend="${active == 'contact'}? 'active'">
+                <a class="nav-link" href="/home/contact">Contact</a>
+            </li>
+            <li class="nav-item" th:classappend="${active == 'sales'}? 'active'">
+                <a class="nav-link" href="/sales/index">Sales</a>
+            </li>
+            <li class="nav-item" th:classappend="${active == 'admin'}? 'active'">
+                <a class="nav-link" href="/admin/users">Admin</a>
+            </li>
+        </ul>
+
+    </div>
+</body>
+
+</html>

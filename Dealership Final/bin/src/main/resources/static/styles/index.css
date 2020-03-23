@@ -1,0 +1,140 @@
+@import url('https://fonts.googleapis.com/css?family=EB+Garamond&display=swap');
+/*
+
+h1 { font-family: Didot, "Didot LT STD", "Hoefler Text", Garamond, "Times New Roman", serif; font-size: 24px; font-style: normal; font-variant: normal; font-weight: 700; line-height: 26.4px; } h3 { font-family: Didot, "Didot LT STD", "Hoefler Text", Garamond, "Times New Roman", serif; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 700; line-height: 15.4px; } p { font-family: Didot, "Didot LT STD", "Hoefler Text", Garamond, "Times New Roman", serif; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 400; line-height: 20px; } blockquote { font-family: Didot, "Didot LT STD", "Hoefler Text", Garamond, "Times New Roman", serif; font-size: 21px; font-style: normal; font-variant: normal; font-weight: 400; line-height: 30px; } pre { font-family: Didot, "Didot LT STD", "Hoefler Text", Garamond, "Times New Roman", serif; font-size: 13px; font-style: normal; font-variant: normal; font-weight: 400; line-height: 18.5714px; }
+
+#content {
+	max-width: 800px;
+	margin: auto auto;
+}
+
+input[type=text] {
+   font-size: 30px;
+   height: 70px;
+   background-color: rgba(255, 255, 255, 0.65) !important;
+}
+
+#control {
+	margin: 20px auto;
+	display: flex;
+	flex-direction: row;
+	max-width: 600px;
+}
+
+#random {
+	text-align: center;
+	color: white;
+
+}
+
+
+
+
+
+
+
+
+*/
+
+
+.display-1, .display-2, .display-3 {
+    font-family: didot;
+    color: whitesmoke;
+}
+
+
+.jumbotron {
+    text-align: center;
+    color: whitesmoke;
+    background-image: url("/images/road.jpg");
+    text-shadow: 1px 1px 2px white, 0 0 1em rgb(2, 2, 51), 0 0 0.2em rgb(2, 2, 51);
+}
+
+
+.fas {
+    font-family: FontAwesome;
+}
+
+.btn {
+    color: #fff;
+    background-color: #00b3db;
+    border: 1px solid black;
+}
+
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open>.dropdown-toggle.btn-primary {
+    color: rgb(10, 4, 4);
+    background-color: #00b3db;
+    border-color: #285e8e; /*set the color you want here*/
+}
+
+.car {
+    padding: 20px;
+    transform: scale(1);
+    border: 1px solid rgb(16, 12, 36);
+}
+
+.featuredCars {
+    width: 350px;
+    height: 225px;
+    padding: 10px;
+    margin: auto;
+}
+
+.d-block {
+    margin: 0 auto;
+}
+
+.adminHeader{
+    margin: 10px;
+}
+
+#carouselIndicators {
+    color: black;
+}
+.card:active, .d-block:active {
+    transform: scale(.95);
+    transition: transform 0.2s;
+}
+
+#descript {
+	border-top-style:dotted;
+    border-bottom-style:dotted;
+    border-left-style:dotted;
+    border-right-style:dotted;
+    border-width:12px;
+    border-color: rgb(32, 32, 71);
+    padding:6px;
+    text-align: center;
+}
+
+.specials-container {
+    border: dashed 2px;
+    border-width: 4px;
+    border-color: rgb(32, 32, 71);
+    margin-bottom: 30px;
+
+}
+
+.specials {
+    padding: 10px;
+}
+
+a {
+    text-align: center;
+}
+
+.carousel-inner {
+    margin: auto;
+  }
+
+.search {
+    margin: 5px;
+}
+
+#line{
+    border: 0;
+    height: 2px;
+    background: #333;
+    background-image: linear-gradient(to right, #ccc, #333, #ccc);
+}

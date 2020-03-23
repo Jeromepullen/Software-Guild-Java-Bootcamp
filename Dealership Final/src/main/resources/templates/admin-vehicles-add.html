@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="~{shared-admin :: head ('admin')}">
+    <title>Admin</title>
+</head>
+
+<body>
+    <div class="container">
+        <div th:replace="~{shared-admin :: navbar ('admin')}"></div>
+        <hr />
+        <h2>Admin Page</h2>
+        <div sec:authorize="isAuthenticated()">
+            <form class="form-inline" method="POST" action="/logout">
+                <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+                <label for="submit">
+                    Hello : <span th:text="${#authentication.name}">
+                            </span>&nbsp;&nbsp;&nbsp;|
+                </label>
+                <button class="btn btn-link" 
+                        id="submit" 
+                        type="submit">Logout
+                </button>
+            </form>
+        </div>
+        <div class="row">
+            <h3>Add Vehicle</h3>
+        </div>
+        <div class="row">
+            <div class="col-8 mx-auto">
+            <form method="POST" th:object="${vehicle}">
+                <div class="form-group">
+                    <div class="row">
+
+                        <div class="col-6">
+                            <label for="makeInput">Make</label>
+                            <select  id ="makeInput" class="form-control" required>
+                                    <option th:each="currentMake : ${makes}"
+                                    th:value="${currentMake.name}"
+                                    th:text="${currentMake.name}">Value</option>
+                            </select>
+                        </div>
+                        <div class="col-6">
+                            <label for="modelId">Make</label>
+                            <select id="SELECT_LIST" name ="modelId" class="form-control" required>
+                                    <option th:each="currentModel : ${models}"
+                                    th:value="${currentModel.modelId}"
+                                    th:text="${currentModel.name}">Value</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                        <div class="row">
+                            <div class="col-6">
+                                <div th:classappend="${#fields.hasErrors('msrp')}? 'validation-err'">
+                                        <label for="msrp">MSRP:</label>
+                                        <input class="form-control" type="number" min="0" max="200000" th:field="*{msrp}">
+                                        <div class="validation-message" th:if="${#fields.hasErrors('msrp')}" 
+                                            th:each="error : ${#fields.errors('msrp')}" 
+                                            th:text="${error}">
+                                            Error Message
+                                        </div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                    <div th:classappend="${#fields.hasErrors('price')}? 'validation-err'">
+                                            <label for="price">Price:</label>
+                                            <input class="form-control" type="number" min="0" max="200000" th:field="*{price}">
+                                            <div class="validation-message" th:if="${#fields.hasErrors('price')}" 
+                                                th:each="error : ${#fields.errors('price')}" 
+                                                th:text="${error}">
+                                                Error Message
+                                            </div>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-6">
+                            <div th:classappend="${#fields.hasErrors('year')}? 'validation-err'">
+                                    <label for="year">Year:</label>
+                                    <input class="form-control" type="number" min="2000" max="2021" th:field="*{year}">
+                                    <div class="validation-message" th:if="${#fields.hasErrors('year')}" 
+                                        th:each="error : ${#fields.errors('year')}" 
+                                        th:text="${error}">
+                                        Error Message
+                                    </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div th:classappend="${#fields.hasErrors('mileage')}? 'validation-err'">
+                                    <label for="mileage">Mileage:</label>
+                                    <input class="form-control" type="number" min="0" max="100000" th:field="*{mileage}">
+                                    <div class="validation-message" th:if="${#fields.hasErrors('mileage')}" 
+                                        th:each="error : ${#fields.errors('mileage')}" 
+                                        th:text="${error}">
+                                        Error Message
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-4">
+                            <label for="bodyStyleId">Body Style:</label>
+                            <select  name ="bodyStyleId" class="form-control" required>
+                                    <option th:each="style : ${styles}"
+                                    th:value="${style.bodyStyleId}"
+                                    th:text="${style.name}">Value</option>
+                            </select>
+                        </div>
+                        <div class="col-4">
+                            <label for="exteriorColorId">Exterior Color:</label>
+                            <select  name="exteriorColorId" class="form-control" required>
+                                    <option th:each="ext : ${colors}"
+                                    th:value="${ext.colorId}"
+                                    th:text="${ext.name}">Value</option>
+                            </select>
+                        </div>
+                        <div class="col-4">
+                            <label for="interiorColorId">Interior Color:</label>
+                            <select name="interiorColorId" class="form-control" required>
+                                    <option th:each="int : ${colors}"
+                                    th:value="${int.colorId}"
+                                    th:text="${int.name}">Value</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group" th:classappend="${#fields.hasErrors('url')}? 'validation-err'">
+                    <div class="row">
+                        <div class="col-3">
+                        <label for="isFeatured" class="control-label">Featured:</label>
+                        <input type="checkbox"  
+                               id="isFeatured"
+                               name="isFeatured"
+                               th:checked="*{isFeatured}"/>
+                        </div>
+                        <div class="col-9">
+                        <label for="url">Picture URL:</label>
+                        <input class="form-control" type="url" th:field="*{url}">
+                        <div class="validation-message" th:if="${#fields.hasErrors('url')}" 
+                            th:each="error : ${#fields.errors('url')}" 
+                            th:text="${error}">
+                            Error Message
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group" th:classappend="${#fields.hasErrors('description')}? 'validation-err'">
+                        <label for="description">Vehicle Description:</label>
+                        <input class="form-control" type="text" th:field="*{description}">
+                        <div class="validation-message" th:if="${#fields.hasErrors('description')}" 
+                            th:each="error : ${#fields.errors('description')}" 
+                            th:text="${error}">
+                            Error Message
+                        </div>
+                </div> 
+                <div class="form-group" th:classappend="${#fields.hasErrors('vin')}? 'validation-err'">
+                    <label for="vin">Vehicle Identification Number:</label>
+                    <input class="form-control" type="text" th:field="*{vin}">
+                    <div class="validation-message" th:if="${#fields.hasErrors('vin')}" 
+                        th:each="error : ${#fields.errors('vin')}" 
+                        th:text="${error}">
+                        Error Message
+                    </div>
+            </div> 
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Save</button>
+                    <a href="/admin" class="btn btn-default">Cancel</a>
+                </div>
+        </form>
+        </div>
+        </div>
+    </div>
+        <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script src="/js/adminVehicle.js"></script>
+    </body>
+</html>

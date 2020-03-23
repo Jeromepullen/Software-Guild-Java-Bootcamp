@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+
+<head th:replace="~{shared :: head ('home')}">
+    <title>Home</title>
+</head>
+
+<body>
+    <div class="container">
+        <div th:replace="~{shared :: navbar ('home')}"></div>
+        <div class="jumbotron col-9 mx-auto">
+            <h1 class="display-4">
+                <em>Car Dealership</em>
+            </h1>
+        </div>
+        <div class="row mx-auto">
+            <div id="carouselIndicators" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                    <div th:each="special, itrStat : ${specials}"
+                        th:class="${itrStat.index}== 0 ? 'carousel-item active' : 'carousel-item'">
+                        <div class="d-block">
+                            <a href="/home/specials" th:href="'/home/specials'">
+                                <h3 class="display-5" id="descript" th:text="${special.description}">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <a class="carousel-control-prev" href="#carouselIndicators" id="arrowForward" role="button"
+                    data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselIndicators" id="arrowBack" role="button"
+                    data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+        <div class="row">
+            <h4 class="display-4">Featured Vehicles</h4>
+        </div>
+        <div class="row car" id="carTable" th:each="car : ${featuredVehicles}">
+            <div class="col-4">
+                <a th:href="'/inventory/'+${car.vehicle.vehicleId}">
+                    <img th:src="${car.vehicle.url}" class="card-img-top featuredCars mx-auto img-fluid" alt="Car Image">
+                </a>
+            </div>
+            <div class="col-4">
+                <h5 class="display-5" th:text="${car.vehicle.year} + ' ' + ${car.make.name} + ' ' + ${car.model.name}">
+                    Cars
+                    <br>
+                </h5>
+                <h6 th:text="'Mileage: ' + ${car.vehicle.mileage} + ' miles'">Miles</h6> <br>
+                <h6 th:text="'Body Style: ' + ${car.body.name}">Body</h6> <br>
+                <h6 th:text="'Interior: ' + ${car.interiorColor.name}">Interior</h6> <br>
+                <h6 th:text="'Exterior: ' + ${car.exteriorColor.name}">Exterior</h6> <br>
+            </div>
+            <div class="col-4">
+                <h5 class="display-5" th:text="'MSRP: $'+ ${car.vehicle.msrp}">Msrp</h5>
+                <h5 class="display-5" th:text="'Our Price: $' + ${car.vehicle.price}">Price</h5>
+            </div>
+        </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script src="/js/home.js"></script>
+</body>
+
+</html>

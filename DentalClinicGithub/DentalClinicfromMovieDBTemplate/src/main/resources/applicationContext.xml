@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans 
+
+    xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xsi:schemaLocation="
+          http://www.springframework.org/schema/beans
+          http://www.springframework.org/schema/beans/spring-beans.xsd
+          http://www.springframework.org/schema/mvc
+          http://www.springframework.org/schema/mvc/spring-mvc.xsd
+          http://www.springframework.org/schema/tx
+          http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+          http://www.springframework.org/schema/context
+          http://www.springframework.org/schema/context/spring-context.xsd
+          http://www.springframework.org/schema/aop  
+          http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
+        ">
+
+    <!-- Bean definitions go here -->
+    <bean id="IO" class="UI.UserIO"/>
+    
+    <bean id="View" class="UI.View">
+        <constructor-arg ref="IO"/>
+    </bean>
+    
+    <bean id="Controller" class="Controller.Controller">
+        <constructor-arg ref="View"/>
+        <constructor-arg ref="dao"/>
+        <constructor-arg ref="daoCust"/>
+        <constructor-arg ref="daoPro"/>
+    </bean>
+    
+    <bean id="Service" class="Service.Service">
+        <constructor-arg ref="AppointmentDao"/>
+        <constructor-arg ref="ProfessionalDao"/>
+        <constructor-arg ref="CustomerDao"/>
+        
+        <constructor-arg value="Professional"/>
+    </bean>
+    
+    <bean id="AppointmentDao" class="Dao.AppointmentDaoImpl"/>
+    
+    <bean id="ProfessionalDao" class="Dao.ProfessionalDaoImpl"/>
+    
+    <bean id="CustomerDao" class="Dao.CustomerDaoImpl"/>
+    
+    <!-- AOP go here -->
+   
+</beans>
