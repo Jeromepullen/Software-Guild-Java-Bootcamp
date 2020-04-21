@@ -1,0 +1,5 @@
+Snickers::1.00::3::
+Corn Nuts::2.00::4::
+Mounds::1.00::1::
+Almond Joy::0.50::2::
+Reeses Pieces::1.00::8::

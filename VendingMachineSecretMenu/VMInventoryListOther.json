@@ -1,0 +1,32 @@
+[
+ {
+   "FIELD1": "Snickers",
+   "FIELD2": "1.00",
+   "FIELD3": 4,
+   "FIELD4": null
+ },
+ {
+   "FIELD1": "Corn",
+   "FIELD2": "Nuts",
+   "FIELD3": 2,
+   "FIELD4": 4
+ },
+ {
+   "FIELD1": "Mounds",
+   "FIELD2": "1.00",
+   "FIELD3": 3,
+   "FIELD4": null
+ },
+ {
+   "FIELD1": "Almond",
+   "FIELD2": "Joy",
+   "FIELD3": 0.5,
+   "FIELD4": 2
+ },
+ {
+   "FIELD1": "Reeses",
+   "FIELD2": "Pieces",
+   "FIELD3": 1,
+   "FIELD4": 8
+ }
+]
